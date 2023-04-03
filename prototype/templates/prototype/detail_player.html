@@ -1,0 +1,63 @@
+{% load django_bootstrap5 %}
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <title>Document</title>
+</head>
+<body>
+    <h1>選手詳細</h1>
+    <div>
+    <p>{{player.lastName}}&nbsp;{{player.firstName}}
+        &nbsp;&nbsp;&nbsp;&nbsp;{{player.age}}才
+        &nbsp;&nbsp;&nbsp;&nbsp;{{player.birthPlace}}&nbsp;出身
+    </p>
+    <p>{{player.handed}}投げ{{player.bbox}}打ち</p>
+    </div>
+    <div>
+        <table border="1">
+            <tr>
+                <td>バットコントロール.</td>
+                <td>{{player.contact}}</td>
+            </tr>
+            <tr>
+                <td>パワー.</td>
+                <td>{{player.power}}</td>
+            </tr>
+            <tr>
+                <td>走力.</td>
+                <td>{{player.speed}}</td>
+            </tr>
+            <tr>
+                <td>盗塁の上手さ.</td>
+                <td>{{player.steeling}}</td>
+            </tr>
+            <tr>
+                <td>肩の強さ.</td>
+                <td>{{player.arm_strength}}</td>
+            </tr>
+            <tr>
+                <td>送球の正確性.</td>
+                <td>{{player.arm_accuracy}}</td>
+            </tr>
+            <tr>
+                <td>捕球の正確性.</td>
+                <td>{{player.catch}}</td>
+            </tr>
+            <tr>
+                <td>打球反応の良さ.</td>
+                <td>{{player.reaction}}</td>
+            </tr>
+        </table>
+    </p>
+    </div>
+    <div>
+        {{player.profile}}
+    </div>
+</body>
+</html>

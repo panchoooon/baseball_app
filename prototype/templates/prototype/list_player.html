@@ -1,0 +1,44 @@
+{% load django_bootstrap5 %}
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"> -->
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1>選手一覧</h1>
+    </div>
+
+    <table border="1" class=""table table-condensed">
+        <tr>
+            <th class="table-primary">no</th>
+            <th class="table-primary">氏</th>
+            <th class="table-primary">利き腕</th>
+            <th class="table-primary">打席</th>
+            <th class="table-primary">バットコントロール</th>
+            <th class="table-primary">パワー</th>
+            <th class="table-primary">走力</th>
+        </tr>
+        {% for player in player_list%}
+        <tr>
+            <td>{{ player.id }}</td>
+            <td><a href="{%url 'detail_player' id=player.id%}">{{ player.lastName }}</a></td>
+            <td>{{ player.handed }}</td>
+            <td>{{ player.bbox }}</td>
+            <td>{{ player.contact }}</td>
+            <td>{{ player.power }}</td>
+            <td>{{ player.speed }}</td>
+        </tr> 
+        {% endfor %}
+    </table>
+
+
+</body>
+</html>
