@@ -1,3 +1,4 @@
+#%%
 """
 WSGI config for baseball_app project.
 
