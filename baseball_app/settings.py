@@ -32,8 +32,8 @@ ALLOWED_HOSTS = ['*']
 
 
 # 開発環境用 #
-DEBUG = True
-ALLOWED_HOSTS = []
+# DEBUG = True
+# ALLOWED_HOSTS = []
 # 開発環境用 #
 
 
