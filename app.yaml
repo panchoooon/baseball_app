@@ -1,6 +1,6 @@
 runtime: python39
 
-entrypoint: gunicorn -b :$PORT core.wsgi:application #webサーバ
+# entrypoint: gunicorn -b :$PORT core.wsgi:application #webサーバ
 
 resources:
   memory_gb: 4
