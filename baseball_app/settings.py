@@ -24,6 +24,8 @@ SECRET_KEY = 'django-insecure-@s7urtrdoo%89q0o@4se5ovem9ktxmognn0#y88nsmkuz(-$kl
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
+#STATICFILES_STORAGE は本番環境では必要。ローカルではコメントアウト。
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage' #追加(https://www.mathpython.com/django-debug-false)
 
 # 本番環境用 #
 DEBUG = False
@@ -52,7 +54,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware', #追加
+    'whitenoise.middleware.WhiteNoiseMiddleware', #追加('django.middleware.security.SecurityMiddleware'の直後が良いらしい。)
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
