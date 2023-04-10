@@ -89,8 +89,17 @@ WSGI_APPLICATION = 'baseball_app.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        # 'ENGINE': 'django.db.backends.sqlite3', #ローカル開発用
+        # 'NAME': BASE_DIR / 'db.sqlite3', #ローカル開発用
+        
+        #GCPデプロイ用
+        'ENGINE': 'django.db.backends.mysql', #GCPデプロイ用
+        'NAME': 'baseball_app_db', #GCPデプロイ用
+        'USER': 'root', #GCPデプロイ用
+        'PASSWORD':'Aabc0322',
+        'HOST':'127.0.0.1',
+        'PORT':'3306'
+        
     }
 }
 

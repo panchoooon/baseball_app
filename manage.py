@@ -2,7 +2,9 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
+import pymysql #GCPでのデプロイ用に追記
 
+pymysql.install_as_MySQLdb() #GCPでのデプロイ用に追記
 
 def main():
     """Run administrative tasks."""
