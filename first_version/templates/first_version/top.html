@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block main %}
+<div class="welcome">
+  <h1 class="title">ようこそ野球選手作成アプリへ！</h1>
+  <p class="subtitle">あなたのオリジナル選手を作成しましょう！🥎</p>
+  <a href = "{% url 'create_player' %}">選手作成</a>
+  <p>選手一覧</p>
+</div>
+{% endblock %}

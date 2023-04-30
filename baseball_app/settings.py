@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,36 +26,39 @@ SECRET_KEY = 'django-insecure-@s7urtrdoo%89q0o@4se5ovem9ktxmognn0#y88nsmkuz(-$kl
 # SECURITY WARNING: don't run with debug turned on in production!
 
 #STATICFILES_STORAGE は本番環境では必要。ローカルではコメントアウト。
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage' #追加(https://www.mathpython.com/django-debug-false)
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage' #追加(https://www.mathpython.com/django-debug-false)
 
+# 本番環境用(DEBUG, ALLOWED_HOSTS) #
+# DEBUG = False
+# ALLOWED_HOSTS = ['*']
 # 本番環境用 #
-DEBUG = False
-ALLOWED_HOSTS = ['*']
-# 本番環境用 #
 
 
-# 開発環境用 #
-# DEBUG = True
-# ALLOWED_HOSTS = []
+# 開発環境用(DEBUG, ALLOWED_HOSTS) #
+DEBUG = True
+ALLOWED_HOSTS = []
 # 開発環境用 #
 
 
 # Application definition
 # アプリケーションの定義
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
+    'django.contrib.admin', #管理画面
+    'django.contrib.auth', #認証機能
+    'django.contrib.contenttypes', #Content-typeに関する機能
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'prototype', #追記
-    'django_bootstrap5' #追記
+    'django.contrib.staticfiles', #CSSなど静的ファイルに関する機能
+    'django_bootstrap5', #追記
+    'first_version', #追記
+    # 'accounts', #追記(ユーザー認証機能用)実践Djangoにアプリわけたほうが良いと書いてたので分けた。
+    'accounts.apps.AccountsConfig', ##追記(ユーザー認証機能用)'
+    
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware', #追加('django.middleware.security.SecurityMiddleware'の直後が良いらしい。)
+    # 'whitenoise.middleware.WhiteNoiseMiddleware', #追加('django.middleware.security.SecurityMiddleware'の直後が良いらしい。)
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -68,7 +72,7 @@ ROOT_URLCONF = 'baseball_app.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'], #追記(実践Djangop.54 1.5章) ※おそらくbase.htmlを読み込むための追記
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -89,16 +93,16 @@ WSGI_APPLICATION = 'baseball_app.wsgi.application'
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.sqlite3', #ローカル開発用
-        # 'NAME': BASE_DIR / 'db.sqlite3', #ローカル開発用
+        'ENGINE': 'django.db.backends.sqlite3', #ローカル開発用
+        'NAME': BASE_DIR / 'db.sqlite3', #ローカル開発用
         
         #GCPデプロイ用
-        'ENGINE': 'django.db.backends.mysql', #GCPデプロイ用
-        'NAME': 'baseball_app_db', #GCPデプロイ用
-        'USER': 'root', #GCPデプロイ用
-        'PASSWORD':'Aabc0322',
-        'HOST':'127.0.0.1',
-        'PORT':'3306'
+        # 'ENGINE': 'django.db.backends.mysql', #GCPデプロイ用
+        # 'NAME': 'baseball_app_db', #GCPデプロイ用
+        # 'USER': 'root', #GCPデプロイ用
+        # 'PASSWORD':'Aabc0322',
+        # 'HOST':'127.0.0.1',
+        # 'PORT':'3306'
         
     }
 }
@@ -138,9 +142,21 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
-
+#js、cssなど静的ファイルを配置するフォルダパス
+STATIC_URL = 'static/' 
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# ユーザー認証
+#
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
+# 選手の顔画像
+# 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
