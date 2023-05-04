@@ -17,7 +17,7 @@ console.log("Fielder form data: ", fielderFormData);
 // フォーム情報を送信する処理を記述する
 $.ajax({
   type: "POST",
-  url: '',  // views.pyで定義されたURL
+  url: '/first_version/create_player/',  // views.pyで定義されたURL
   beforeSend: function(xhr, settings) {
     if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
         xhr.setRequestHeader("X-CSRFToken", csrftoken);

@@ -18,9 +18,16 @@ from django.urls import path, include
 
 from first_version.views import top
 
+# 顔画像
+from . import settings
+
+from django.conf.urls.static import static
 urlpatterns = [
     path('', top, name='top'), #トップ画面
     path('admin/', admin.site.urls), #管理画面
     path('accounts/', include('accounts.urls')), #ユーザー管理アプリのURL群
     path('first_version/', include('first_version.urls')) #1stバージョン(野球アプリ)のURL群
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

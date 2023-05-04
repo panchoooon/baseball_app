@@ -3,6 +3,8 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import path
 from django.views.generic import CreateView
 
+
+
 urlpatterns = [
     #新規登録画面
     path('signup/', CreateView.as_view(

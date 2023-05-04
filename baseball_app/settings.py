@@ -156,7 +156,7 @@ LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
-# 選手の顔画像
-# 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# 選手の顔画像を奥フォルダ
+
 MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

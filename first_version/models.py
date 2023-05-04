@@ -5,7 +5,7 @@ from django.conf import settings
 
 from django.core.validators import MaxValueValidator, MinValueValidator #最大最小を設定
 
-
+from django.contrib.auth.models import User #ユーザー
 
 CAREER_CHOICES = [
   ('高卒', '高卒'),
@@ -139,12 +139,7 @@ class Player(models.Model):
   
   # 主キー (プレイヤーID)
   player_id = models.AutoField(primary_key=True)
-  
-  # 外部キー ※登録ユーザー名
-  # aid = models.ForeignKey(settings.AUTH_USER_MODEL, 
-  #                         verbose_name="作成ユーザー", #admin(管理画面)で表示される名前
-  #                         on_delete=models.CASCADE)
-  
+
   ##################
   # 選手プロフィール #
   ##################
@@ -217,10 +212,11 @@ class Player(models.Model):
     choices = CHARACTER_CHOICES
   )
   
-  # image = models.ImageField(
-  #   "見た目",
-  #   upload_to=directory_path
-  # )
+  image = models.ImageField(
+    "見た目",
+    upload_to="media/images/",
+    default="media/images/image001.png"
+  )
   profile = models.CharField(
     "プロフィール", 
     max_length=200,
@@ -229,7 +225,7 @@ class Player(models.Model):
   
   ###########
   # 投手能力 #
-  ###########Player_Form
+  ###########
   pitching_form = models.CharField(
     "投球フォーム",
     max_length=20,
