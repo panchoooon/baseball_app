@@ -23,7 +23,7 @@ def create_player(request):
         if form.is_valid():
             print("form.is_valid()True")
             player = form.save(commit=False)
-            # player.created_by = request.user
+            player.created_by = request.user
             player.save()
             return render(request, "first_version/top.html")
         else:
@@ -36,6 +36,13 @@ def create_player(request):
     
     return render(request, "first_version/create_player.html", \
                     {"form":form})
+
+# 選手一覧画面
+def list_players(request):
+    player_list = Player.objects.all().values() #DBから選手データを取り出し
+
+    return render(request, "first_version/list_players.html",{"player_list":player_list})
+
 
 
 

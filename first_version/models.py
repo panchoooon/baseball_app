@@ -138,7 +138,11 @@ POSITION_APPROPRIATE_CHOICES =[
 class Player(models.Model):
   
   # 主キー (プレイヤーID)
+  # id = models.AutoField(primary_key=True)
   player_id = models.AutoField(primary_key=True)
+
+  # 作成者(ログインユーザー)
+  created_by = models.ForeignKey(User, on_delete=models.CASCADE)
 
   ##################
   # 選手プロフィール #
@@ -217,9 +221,9 @@ class Player(models.Model):
     upload_to="media/images/",
     default="media/images/image001.png"
   )
-  profile = models.CharField(
+  profile = models.TextField(
     "プロフィール", 
-    max_length=200,
+    max_length=150,
     default = "がんばります！！"
   )
   

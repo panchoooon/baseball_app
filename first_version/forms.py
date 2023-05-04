@@ -27,8 +27,8 @@ class PlayerForm(forms.ModelForm):
         "bbox",
         "player_type",
         "character",
-        "profile",
         "image",
+        "profile",
         ###########
         # 投手能力 #
         ###########
@@ -137,8 +137,17 @@ class PlayerForm(forms.ModelForm):
         "pitcher_lead":"投手リード",
         "home_block":"ブロック",
         "sturdiness":"ケガしにくさ"
-        
       }
+    widgets = {
+      'career':forms.Select( 
+        choices = [
+          ('高卒', '高卒'),
+          ('大卒', '大卒'),
+          ('社会人', '社会人'),
+          ('助っ人', '助っ人')
+        ]
+      )
+    }
 
 #選手プロフィール
 # class PlayerProfileForm(forms.ModelForm):

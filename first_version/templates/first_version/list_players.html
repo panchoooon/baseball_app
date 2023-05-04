@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'first_version/css/create_player.css' %}">
+
+{% endblock %}
+
+{% block main %}
+
+<div>
+  <h1>選手一覧</h1>
+</div>
+
+<table border="1" class=""table table-condensed">
+  <tr>
+      <th class="table-primary">no</th>
+      <th class="table-primary">氏</th>
+      <th class="table-primary">利き腕</th>
+      <th class="table-primary">打席</th>
+      <th class="table-primary">バットコントロール</th>
+      <th class="table-primary">パワー</th>
+      <th class="table-primary">走力</th>
+  </tr>
+  {% for player in player_list%}
+  <tr>
+      <td>{{ player.player_id }}</td>
+      <td>{{ player.lastName }}</a></td>
+      <td>{{ player.handed }}</td>
+      <td>{{ player.bbox }}</td>
+      <td>{{ player.contact }}</td>
+      <td>{{ player.power }}</td>
+      <td>{{ player.speed }}</td>
+  </tr> 
+  {% endfor %}
+</table>
+
+{% endblock %} 
