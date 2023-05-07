@@ -3,48 +3,230 @@
 {% block extrahead %}
 {% load static %}
 <link rel="stylesheet" href="{% static 'first_version/css/create_player.css' %}">
-<!-- <script src="{% static 'first_version/js/jquery-3.6.4.js' %}"></script>
-<script src="{% static 'first_version/js/create_player.js' %}"></script> -->
 
 {% endblock %}
 
 {% block main %}
 
-  <form method = "post" enctype="multipart/form-data">
-    {%csrf_token%}
-    <h2>プロフィール</h2>
-      {% if form.non_field_errors %}
-          <div class="errorlist">
-              {% for error in form.non_field_errors %}
-                  {{ error }}<br>
-              {% endfor %}
-          </div>
-      {% endif %}
+<form method = "post" enctype="multipart/form-data">
+{%csrf_token%}
+    {% if form.non_field_errors %}
+        <div class="errorlist">
+            {% for error in form.non_field_errors %}
+                {{ error }}<br>
+            {% endfor %}
+        </div>
+    {% endif %}
 
-      {% for field in form %}
-          <div class="field">
-              {{ field.label_tag }}
-              {{ field }}
-              {% if field.help_text %}
-                  <span class="helptext">{{ field.help_text }}</span>
-              {% endif %}
+    {% for field in form %}
+        <div class="field">
+            {% if field.label_tag == "姓: " %}
+                <h2>プロフィール</h2>
+            {% elif field.label_tag == "投球フォーム:" %}
+                <h2>投手能力</h2>
+            {% elif field.label_tag == "ミート:"%}
+                <h2>野手能力</h2>
+            {% endif %}
 
-              {% if field.errors %}
-                  <div class="errorlist">
-                      {% for error in field.errors %}
-                          {{ error }}<br>
-                      {% endfor %}
-                  </div>
-              {% endif %}
-          </div>
-      {% endfor %}
+            {{ field.label_tag }}
+            {{ field }}
+            
+            {% if field.help_text %}
+                <span class="helptext">{{ field.help_text }}</span>
+            {% endif %}
 
+            {% if field.errors %}
+                <div class="errorlist">
+                    {% for error in field.errors %}
+                    {{ error }}<br>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    {% endfor %}
 
-    <!-- <input type="submit" value="保存"> -->
+<div>
+    <button type="submit">保存</button>
+</div>
+
+</form>
+<!-- <form method="post">
+    {% csrf_token %}
+    <label for="{{ form.lastName.id_for_label }}">姓</label>
+    {{ form.lastName }}
+    <br>
+
+    <label for="{{ form.firstName.id_for_label }}">名</label>
+    {{ form.firstName }}
+    <br>
+
+    <label for="{{ form.career.id_for_label }}">経歴</label>
+    {{ form.career }}
+    <br>
+
+    <label for="{{ form.age.id_for_label }}">年齢</label>
+    {{ form.age }}
+    <br>
+
+    <label for="{{ form.number_of_years.id_for_label }}">プロ年数</label>
+    {{ form.number_of_years }}
+    <br>
+
+    <label for="{{ form.height.id_for_label }}">身長</label>
+    {{ form.height }}
+    <br>
+
+    <label for="{{ form.weight.id_for_label }}">体重</label>
+    {{ form.weight }}
+    <br>
+
+    <label for="{{ form.uniformNumber.id_for_label }}">背番号</label>
+    {{ form.uniformNumber }}
+    <br>
+
+    <label for="{{ form.birthPlace.id_for_label }}">出身地</label>
+    {{ form.birthPlace }}
+    <br>
+
+    <label for="{{ form.throw.id_for_label }}">利き腕</label>
+    {{ form.throw }}
+    <br>
+
+    <label for="{{ form.bbox.id_for_label }}">打席</label>
+    {{ form.bbox }}
+    <br>
+
+    <label for="{{ form.player_type.id_for_label }}">選手タイプ</label>
+    {{ form.player_type }}
+    <br>
+
+    <label for="{{ form.character.id_for_label }}">キャラクター</label>
+    {{ form.character }}
+    <br>
+
+    <label for="{{ form.image.id_for_label }}">画像</label>
+    {{ form.image }}
+    <br>
+
+    <label for="{{ form.profile.id_for_label }}">プロフィール</label>
+    {{ form.profile }}
+    <br>
+
+    <label for="{{ form.pitching_form.id_for_label }}">投球フォーム</label>
+    {{ form.pitching_form }}
+    <br>
+
+    <label for="{{ form.stamina.id_for_label }}">スタミナ</label>
+    {{ form.stamina }}
+    <br>
+
+    <label for="{{ form.maximum_ball_speed.id_for_label }}">最大球速</label>
+    {{ form.maximum_ball_speed }}
+    <br>
+
+    <label for="{{ form.power_of_straight.id_for_label }}">ストレートの球威</label>
+    {{ form.power_of_straight }}
+    <br>
+
+    <label for="{{ form.growth_of_straight.id_for_label }}">ストレートのノビ</label>
+    {{ form.growth_of_straight }}
+    <br>
+
+    <label for="{{ form.control_of_straight.id_for_label }}">ストレートのコントロール</label>
+    {{ form.control_of_straight }}
+    <br>
+
+    <label for="{{ form.mental_strength.id_for_label }}">メンタル</label>
+    {{ form.mental_strength }}
+    <br>
+
+    <label for="{{ form.strike_out.id_for_label }}">奪三振</label>
+    {{ form.strike_out }}
+    <br>
+
     <div>
-      <button type="submit">保存</button>
+        <label for="{{ form.contact.id_for_label }}">ミート</label>
+        {{ form.contact }}
+    </div>
+    <div>
+        <label for="{{ form.power.id_for_label }}">パワー</label>
+        {{ form.power }}
+    </div>
+    <div>
+        <label for="{{ form.vision.id_for_label }}">選球眼</label>
+        {{ form.vision }}
+    </div>
+    <div>
+        <label for="{{ form.speed.id_for_label }}">走力</label>
+        {{ form.speed }}
+    </div>
+    <div>
+        <label for="{{ form.arm_strength.id_for_label }}">肩力</label>
+        {{ form.arm_strength }}
+    </div>
+    <div>
+        <label for="{{ form.arm_accuracy.id_for_label }}">送球</label>
+        {{ form.arm_accuracy }}
+    </div>
+    <div>
+        <label for="{{ form.reaction.id_for_label }}">打球反応</label>
+        {{ form.reaction }}
+    </div>
+    <div>
+        <label for="{{ form.catch.id_for_label }}">捕球精度</label>
+        {{ form.catch }}
+    </div>
+    <div>
+        <label for="{{ form.main_position.id_for_label }}">メインポジション</label>
+        {{ form.main_position }}
+    </div>
+    <div>
+        <label for="{{ form.catcher_appropriate.id_for_label }}">キャッチャー適正</label>
+        {{ form.catcher_appropriate }}
+    </div>
+    <div>
+        <label for="{{ form.first_appropriate.id_for_label }}">ファースト適正</label>
+        {{ form.first_appropriate }}
+    </div>
+    <div>
+        <label for="{{ form.second_appropriate.id_for_label }}">セカンド適正</label>
+        {{ form.second_appropriate }}
+    </div>
+    <div>
+        <label for="{{ form.third_appropriate.id_for_label }}">サード適正</label>
+        {{ form.third_appropriate }}
+    </div>
+    <div>
+        <label for="{{ form.shortstop_appropriate.id_for_label }}">ショート適正</label>
+        {{ form.shortstop_appropriate }}
+    </div>
+    <div>
+        <label for="{{ form.left_appropriate.id_for_label }}">レフト適正</label>
+        {{ form.left_appropriate }}
+    </div>
+    <div>
+        <label for="{{ form.center_appropriate.id_for_label }}">センター適正</label>
+        {{ form.center_appropriate }}
+    </div>
+    <div>
+        <label for="{{ form.right_appropriate.id_for_label }}">ライト適正</label>
+        {{ form.right_appropriate }}
+    </div>
+    <div>
+        <label for="{{ form.chance.id_for_label }}">チャンス</label>
+        {{ form.chance }}
+    </div>
+    <div>
+        <label for="{{ form.vs_left_pitcher.id_for_label }}">対左投手</label>
+        {{ form.vs_left_pitcher }}
+    </div>
+    <div>
+        <label for="{{ form.inside.id_for_label }}">インコース</label>
+        {{ form.inside }}
     </div>
 
-  </form>
+    <div>
+        <button type="submit">保存</button>
+    </div> -->
 
 {% endblock %} 

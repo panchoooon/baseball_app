@@ -493,7 +493,7 @@ class Migration(migrations.Migration):
                 (
                     "chance",
                     models.PositiveSmallIntegerField(
-                        default=1,
+                        default=5,
                         validators=[
                             django.core.validators.MaxValueValidator(10),
                             django.core.validators.MinValueValidator(1),
@@ -504,7 +504,7 @@ class Migration(migrations.Migration):
                 (
                     "vs_left_pitcher",
                     models.PositiveSmallIntegerField(
-                        default=1,
+                        default=5,
                         validators=[
                             django.core.validators.MaxValueValidator(10),
                             django.core.validators.MinValueValidator(1),
@@ -515,7 +515,7 @@ class Migration(migrations.Migration):
                 (
                     "inside",
                     models.PositiveSmallIntegerField(
-                        default=1,
+                        default=5,
                         validators=[
                             django.core.validators.MaxValueValidator(10),
                             django.core.validators.MinValueValidator(1),
@@ -526,7 +526,7 @@ class Migration(migrations.Migration):
                 (
                     "outside",
                     models.PositiveSmallIntegerField(
-                        default=1,
+                        default=5,
                         validators=[
                             django.core.validators.MaxValueValidator(10),
                             django.core.validators.MinValueValidator(1),
@@ -537,7 +537,7 @@ class Migration(migrations.Migration):
                 (
                     "high_ball",
                     models.PositiveSmallIntegerField(
-                        default=1,
+                        default=5,
                         validators=[
                             django.core.validators.MaxValueValidator(10),
                             django.core.validators.MinValueValidator(1),
@@ -548,7 +548,7 @@ class Migration(migrations.Migration):
                 (
                     "low_ball",
                     models.PositiveSmallIntegerField(
-                        default=1,
+                        default=5,
                         validators=[
                             django.core.validators.MaxValueValidator(10),
                             django.core.validators.MinValueValidator(1),
@@ -559,7 +559,7 @@ class Migration(migrations.Migration):
                 (
                     "bunt",
                     models.PositiveSmallIntegerField(
-                        default=1,
+                        default=5,
                         validators=[
                             django.core.validators.MaxValueValidator(10),
                             django.core.validators.MinValueValidator(1),
@@ -570,7 +570,7 @@ class Migration(migrations.Migration):
                 (
                     "base_running",
                     models.PositiveSmallIntegerField(
-                        default=1,
+                        default=5,
                         validators=[
                             django.core.validators.MaxValueValidator(10),
                             django.core.validators.MinValueValidator(1),
@@ -581,7 +581,7 @@ class Migration(migrations.Migration):
                 (
                     "steeling",
                     models.PositiveSmallIntegerField(
-                        default=1,
+                        default=5,
                         validators=[
                             django.core.validators.MaxValueValidator(10),
                             django.core.validators.MinValueValidator(1),
@@ -592,7 +592,7 @@ class Migration(migrations.Migration):
                 (
                     "pitcher_lead",
                     models.PositiveSmallIntegerField(
-                        default=1,
+                        default=5,
                         validators=[
                             django.core.validators.MaxValueValidator(10),
                             django.core.validators.MinValueValidator(1),
@@ -603,7 +603,7 @@ class Migration(migrations.Migration):
                 (
                     "home_block",
                     models.PositiveSmallIntegerField(
-                        default=1,
+                        default=5,
                         validators=[
                             django.core.validators.MaxValueValidator(10),
                             django.core.validators.MinValueValidator(1),

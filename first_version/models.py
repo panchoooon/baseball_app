@@ -254,17 +254,17 @@ class Player(models.Model):
   growth_of_straight = models.PositiveSmallIntegerField(
     "ストレートのノビ",
     default=1,
-    validators =[MaxValueValidator(100), MinValueValidator(1)]
+    validators =[MaxValueValidator(1000), MinValueValidator(1)]
   )
   control_of_straight = models.PositiveSmallIntegerField(
     "ストレートのコントロール",
     default=1,
-    validators =[MaxValueValidator(100), MinValueValidator(1)]
+    validators =[MaxValueValidator(1000), MinValueValidator(1)]
   )
   mental_strength = models.PositiveSmallIntegerField(
     "メンタル",
     default=1,
-    validators =[MaxValueValidator(100), MinValueValidator(1)]
+    validators =[MaxValueValidator(10), MinValueValidator(5)]
   )
   strike_out = models.PositiveSmallIntegerField(
     "奪三振",
