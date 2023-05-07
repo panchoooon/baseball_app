@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required #ログイン必須の画面で使う
 
 # Create your views here.
 # from .forms import PlayerProfileForm, PlayerPitcherForm, PlayerFielderForm
@@ -12,10 +13,11 @@ def top(request):
 
 
 # 選手作成画面
+@login_required
 def create_player(request):
     if request.method == "POST":
         print("views.py:if request.method == 'POST':")
-        print("----------------------------------------------------------")
+        print("--------------------------------------------------------------")
         
         form = PlayerForm(request.POST, request.FILES)
         
