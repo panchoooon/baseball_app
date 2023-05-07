@@ -82,14 +82,14 @@ BIRTHPLACE_CHOICES = [
 ]
 
 HANDED_CHOICES = [
-  ("right","右"),
-  ("left","左")
+  ("右","右"),
+  ("左","左")
 ]
 
 BBOX_CHOICES = [
-  ("right","右"),
-  ("left","左"),
-  ("both","両")
+  ("右","右"),
+  ("左","左"),
+  ("両","両")
 ]
 
 PLAYER_TYPE_CHOICES = [
@@ -229,6 +229,66 @@ class Player(models.Model):
     default = "がんばります！！"
   )
   
+  # 守備適正
+  pitcher_appropriate = models.CharField(
+    "ピッチャー適正",
+    default=POSITION_APPROPRIATE_CHOICES[3][0],
+    max_length=10,
+    choices=POSITION_APPROPRIATE_CHOICES
+  )
+  catcher_appropriate = models.CharField(
+    "キャッチャー適正",
+    default=POSITION_APPROPRIATE_CHOICES[3][0],
+    max_length=10,
+    choices=POSITION_APPROPRIATE_CHOICES
+  )
+  
+  first_appropriate = models.CharField(
+    "ファースト適正",
+    default=POSITION_APPROPRIATE_CHOICES[3][0],
+    max_length=10,
+    choices=POSITION_APPROPRIATE_CHOICES
+  )
+    
+  second_appropriate = models.CharField(
+    "セカンド適正",
+    default=POSITION_APPROPRIATE_CHOICES[3][0],
+    max_length=10,
+    choices=POSITION_APPROPRIATE_CHOICES
+  )
+  third_appropriate = models.CharField(
+    "サード適正",
+    default=POSITION_APPROPRIATE_CHOICES[3][0],
+    max_length=10,
+    choices=POSITION_APPROPRIATE_CHOICES
+  )
+  shortstop_appropriate = models.CharField(
+    "ショート適正",
+    default=POSITION_APPROPRIATE_CHOICES[3][0],
+    max_length=10,
+    choices=POSITION_APPROPRIATE_CHOICES
+  )
+  left_appropriate = models.CharField(
+    "レフト適正",
+    default=POSITION_APPROPRIATE_CHOICES[3][0],
+    max_length=10,
+    choices=POSITION_APPROPRIATE_CHOICES
+  )
+  center_appropriate = models.CharField(
+    "センター適正",
+    default=POSITION_APPROPRIATE_CHOICES[3][0],
+    max_length=10,
+    choices=POSITION_APPROPRIATE_CHOICES
+  )
+  right_appropriate = models.CharField(
+    "ライト適正",
+    default=POSITION_APPROPRIATE_CHOICES[3][0],
+    max_length=10,
+    choices=POSITION_APPROPRIATE_CHOICES
+  )
+  # 守備適正
+  
+  
   ###########
   # 投手能力 #
   ###########
@@ -250,7 +310,7 @@ class Player(models.Model):
   )
   power_of_straight = models.PositiveSmallIntegerField(
     "ストレートの球威",
-    default=1,
+    default=200,
     validators =[MaxValueValidator(1000), MinValueValidator(1)]
   )
   growth_of_straight = models.PositiveSmallIntegerField(
@@ -319,56 +379,7 @@ class Player(models.Model):
     validators = [MaxValueValidator(1000), MinValueValidator(1)]
   )
   
-  catcher_appropriate = models.CharField(
-    "キャッチャー適正",
-    default=POSITION_APPROPRIATE_CHOICES[3][0],
-    max_length=10,
-    choices=POSITION_APPROPRIATE_CHOICES
-  )
-  
-  first_appropriate = models.CharField(
-    "ファースト適正",
-    default=POSITION_APPROPRIATE_CHOICES[3][0],
-    max_length=10,
-    choices=POSITION_APPROPRIATE_CHOICES
-  )
-    
-  second_appropriate = models.CharField(
-    "セカンド適正",
-    default=POSITION_APPROPRIATE_CHOICES[3][0],
-    max_length=10,
-    choices=POSITION_APPROPRIATE_CHOICES
-  )
-  third_appropriate = models.CharField(
-    "サード適正",
-    default=POSITION_APPROPRIATE_CHOICES[3][0],
-    max_length=10,
-    choices=POSITION_APPROPRIATE_CHOICES
-  )
-  shortstop_appropriate = models.CharField(
-    "ショート適正",
-    default=POSITION_APPROPRIATE_CHOICES[3][0],
-    max_length=10,
-    choices=POSITION_APPROPRIATE_CHOICES
-  )
-  left_appropriate = models.CharField(
-    "レフト適正",
-    default=POSITION_APPROPRIATE_CHOICES[3][0],
-    max_length=10,
-    choices=POSITION_APPROPRIATE_CHOICES
-  )
-  center_appropriate = models.CharField(
-    "センター適正",
-    default=POSITION_APPROPRIATE_CHOICES[3][0],
-    max_length=10,
-    choices=POSITION_APPROPRIATE_CHOICES
-  )
-  right_appropriate = models.CharField(
-    "ライト適正",
-    default=POSITION_APPROPRIATE_CHOICES[3][0],
-    max_length=10,
-    choices=POSITION_APPROPRIATE_CHOICES
-  )
+
   chance = models.PositiveSmallIntegerField(
     "チャンス",
     default=5,

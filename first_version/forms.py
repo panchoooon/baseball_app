@@ -52,6 +52,7 @@ class PlayerForm(forms.ModelForm):
         "reaction",
         "catch",
         "main_position",
+        "pitcher_appropriate",
         "catcher_appropriate",
         "first_appropriate",
         "second_appropriate",
@@ -117,6 +118,7 @@ class PlayerForm(forms.ModelForm):
         "arm_accuracy":"送球",
         "reaction":"打球反応",
         "catch":"捕球精度",
+        "pitcher_appropriate":"ピッチャー適正",
         "catcher_appropriate":"キャッチャー適正",
         "first_appropriate":"ファースト適正",
         "second_appropriate":"セカンド適正",
@@ -148,3 +150,9 @@ class PlayerForm(forms.ModelForm):
         ]
       )
     }
+    
+    def __init__(self, *args, **kwargs):
+        super(PlayerForm, self).__init__(*args, **kwargs)
+        self.fields["main_position"].widget.attrs.update({
+            "onchange": "update_appropriate_position();"
+        })
