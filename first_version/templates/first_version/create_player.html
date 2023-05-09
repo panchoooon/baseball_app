@@ -3,6 +3,8 @@
 {% block extrahead %}
 {% load static %}
 <link rel="stylesheet" href="{% static 'first_version/css/create_player.css' %}">
+<script src="{% static 'first_version/js/create_player.js' %}" defer></script>
+
 
 {% endblock %}
 
@@ -17,26 +19,7 @@
             {% endfor %}
         </div>
     {% endif %}
-<!-- 
-    {% for field in form %}
-        <div class="field">
 
-            {{ field.label_tag }}
-            {{ field }}
-            
-            {% if field.help_text %}
-                <span class="helptext">{{ field.help_text }}</span>
-            {% endif %}
-
-            {% if field.errors %}
-                <div class="errorlist">
-                    {% for error in field.errors %}
-                    {{ error }}<br>
-                    {% endfor %}
-                </div>
-            {% endif %}
-        </div>
-    {% endfor %} -->
     <h2>プロフィール</h2>
     <div class="field">
         <label for="{{ form.lastName.id_for_label }}">姓:</label>
@@ -183,6 +166,18 @@
     </div>
 
     <div class="field">
+        <label for="{{ form.image.id_for_label }}">見た目:</label>
+        {{ form.image }}
+        {% if form.image.errors %}
+            <div class="errorlist">
+                {% for error in form.image.errors %}
+                {{ error }}<br>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="field">
         <label for="{{ form.profile.id_for_label }}">プロフィール:</label>
         {{ form.profile }}
         {% if form.profile.errors %}
@@ -234,7 +229,7 @@
 
     <div class="field">
         <label for="{{ form.maximum_ball_speed.id_for_label }}">最大球速(km/h):</label>
-        {{ form.maximum_ball_speed }}
+        {{ form.maximum_ball_speed }} 
         {% if form.maximum_ball_speed.errors %}
             <div class="errorlist">
                 {% for error in form.maximum_ball_speed.errors %}
@@ -246,7 +241,7 @@
 
     <div class="field">
         <label for="{{ form.power_of_straight.id_for_label }}">【球威】ストレート:</label>
-        {{ form.power_of_straight }}
+        {{ form.power_of_straight }} {{ abilities_dict.power_of_straight }}
         {% if form.power_of_straight.errors %}
             <div class="errorlist">
                 {% for error in form.power_of_straight.errors %}
@@ -257,8 +252,20 @@
     </div>
 
     <div class="field">
-        <label for="{{ form.growth_of_straight.id_for_label }}">【コントロール】ストレート:</label>
-        {{ form.growth_of_straight }}
+        <label for="{{ form.control_of_straight.id_for_label }}">【コントロール】ストレート:</label>
+        {{ form.control_of_straight }} {{ abilities_dict.control_of_straight }}
+        {% if form.control_of_straight.errors %}
+            <div class="errorlist">
+                {% for error in form.control_of_straight.errors %}
+                {{ error }}<br>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="field">
+        <label for="{{ form.growth_of_straight.id_for_label }}">【ノビ】ストレート:</label>
+        {{ form.growth_of_straight }} {{ abilities_dict.growth_of_straight }}
         {% if form.growth_of_straight.errors %}
             <div class="errorlist">
                 {% for error in form.growth_of_straight.errors %}
@@ -269,8 +276,8 @@
     </div>
 
         <div class="field">
-        <label for="{{ form.mental_strength.id_for_label }}">【ノビ】ストレート:</label>
-        {{ form.mental_strength }}
+        <label for="{{ form.mental_strength.id_for_label }}">メンタル:</label>
+        {{ form.mental_strength }} {{ abilities_dict.mental_strength }}
         {% if form.mental_strength.errors %}
             <div class="errorlist">
                 {% for error in form.mental_strength.errors %}
@@ -280,23 +287,10 @@
         {% endif %}
     </div>
 
-    <div class="field">
-        <label for="{{ form.control_of_straight.id_for_label }}">メンタル:</label>
-        {{ form.control_of_straight }}
-        {% if form.control_of_straight.errors %}
-            <div class="errorlist">
-                {% for error in form.control_of_straight.errors %}
-                {{ error }}<br>
-                {% endfor %}
-            </div>
-        {% endif %}
-    </div>
-
-
 
     <div class="field">
         <label for="{{ form.strike_out.id_for_label }}">奪三振:</label>
-        {{ form.strike_out }}
+        {{ form.strike_out }} {{ abilities_dict.strike_out }}
         {% if form.strike_out.errors %}
             <div class="errorlist">
                 {% for error in form.strike_out.errors %}
@@ -309,7 +303,7 @@
     <h2>野手能力</h2>
     <div class="field">
         <label for="{{ form.contact.id_for_label }}">ミート:</label>
-        {{ form.contact }}
+        {{ form.contact }} {{ abilities_dict.contact }}
         {% if form.contact.errors %}
             <div class="errorlist">
                 {% for error in form.contact.errors %}
@@ -320,8 +314,8 @@
     </div>
 
     <div class="field">
-        <label for="{{ form.power.id_for_label }}">パワー:</label>
-        {{ form.power }}
+        <label for="{{ form.power.id_for_label }}">パワー:</label> 
+        {{ form.power }} {{ abilities_dict.power }}
         {% if form.power.errors %}
             <div class="errorlist">
                 {% for error in form.power.errors %}
@@ -333,7 +327,7 @@
 
     <div class="field">
         <label for="{{ form.vision.id_for_label }}">選球眼:</label>
-        {{ form.vision }}
+        {{ form.vision }} {{ abilities_dict.vision }}
         {% if form.vision.errors %}
             <div class="errorlist">
                 {% for error in form.vision.errors %}
@@ -345,7 +339,7 @@
 
     <div class="field">
         <label for="{{ form.speed.id_for_label }}">走力:</label>
-        {{ form.speed }}
+        {{ form.speed }} {{ abilities_dict.speed }}
         {% if form.speed.errors %}
             <div class="errorlist">
                 {% for error in form.speed.errors %}
@@ -357,7 +351,7 @@
 
     <div class="field">
         <label for="{{ form.arm_strength.id_for_label }}">肩力:</label>
-        {{ form.arm_strength }}
+        {{ form.arm_strength }} {{ abilities_dict.arm_strength }}
         {% if form.arm_strength.errors %}
             <div class="errorlist">
                 {% for error in form.arm_strength.errors %}
@@ -369,7 +363,7 @@
 
     <div class="field">
         <label for="{{ form.arm_accuracy.id_for_label }}">送球:</label>
-        {{ form.arm_accuracy }}
+        {{ form.arm_accuracy }} {{ abilities_dict.arm_accuracy }}
         {% if form.arm_accuracy.errors %}
             <div class="errorlist">
                 {% for error in form.arm_accuracy.errors %}
@@ -381,7 +375,7 @@
 
     <div class="field">
         <label for="{{ form.reaction.id_for_label }}">打球反応:</label>
-        {{ form.reaction }}
+        {{ form.reaction }} {{ abilities_dict.reaction }}
         {% if form.reaction.errors %}
             <div class="errorlist">
                 {% for error in form.reaction.errors %}
@@ -393,7 +387,7 @@
 
     <div class="field">
         <label for="{{ form.catch.id_for_label }}">捕球:</label>
-        {{ form.catch }}
+        {{ form.catch }} {{ abilities_dict.catch }}
         {% if form.catch.errors %}
             <div class="errorlist">
                 {% for error in form.catch.errors %}
@@ -405,7 +399,7 @@
 
     <div class="field">
         <label for="{{ form.pitcher_appropriate.id_for_label }}">ピッチャー適正:</label>
-        {{ form.pitcher_appropriate }}
+        {{ form.pitcher_appropriate }} 
         {% if form.pitcher_appropriate.errors %}
             <div class="errorlist">
                 {% for error in form.pitcher_appropriate.errors %}
@@ -489,7 +483,7 @@
 
     <div class="field">
         <label for="{{ form.center_appropriate.id_for_label }}">センター適正:</label>
-        {{ form.center_appropriate }}
+        {{ form.center_appropriate }} 
         {% if form.center_appropriate.errors %}
             <div class="errorlist">
                 {% for error in form.center_appropriate.errors %}
@@ -501,7 +495,7 @@
 
     <div class="field">
         <label for="{{ form.right_appropriate.id_for_label }}">ライト適正:</label>
-        {{ form.right_appropriate }}
+        {{ form.right_appropriate }} 
         {% if form.right_appropriate.errors %}
             <div class="errorlist">
                 {% for error in form.right_appropriate.errors %}
@@ -513,7 +507,7 @@
 
     <div class="field">
         <label for="{{ form.chance.id_for_label }}">チャンス:</label>
-        {{ form.chance }}
+        {{ form.chance }} {{ abilities_dict.chance }}
         {% if form.chance.errors %}
             <div class="errorlist">
                 {% for error in form.chance.errors %}
@@ -525,7 +519,7 @@
 
     <div class="field">
         <label for="{{ form.vs_left_pitcher.id_for_label }}">対左投手:</label>
-        {{ form.vs_left_pitcher }}
+        {{ form.vs_left_pitcher }} {{ abilities_dict.vs_left_pitcher }}
         {% if form.vs_left_pitcher.errors %}
             <div class="errorlist">
                 {% for error in form.vs_left_pitcher.errors %}
@@ -536,7 +530,7 @@
     </div>
     <div class="field">
         <label for="{{ form.inside.id_for_label }}">インコース:</label>
-        {{ form.inside }}
+        {{ form.inside }} {{ abilities_dict.inside }}
         {% if form.inside.errors %}
             <div class="errorlist">
                 {% for error in form.inside.errors %}
@@ -547,7 +541,7 @@
     </div>
     <div class="field">
         <label for="{{ form.outside.id_for_label }}">アウトコース:</label>
-        {{ form.outside }}
+        {{ form.outside }} {{ abilities_dict.outside }}
         {% if form.outside.errors %}
             <div class="errorlist">
                 {% for error in form.outside.errors %}
@@ -559,7 +553,7 @@
 
     <div class="field">
         <label for="{{ form.high_ball.id_for_label }}">ハイボール:</label>
-        {{ form.high_ball }}
+        {{ form.high_ball }} {{ abilities_dict.high_ball }}
         {% if form.high_ball.errors %}
             <div class="errorlist">
                 {% for error in form.high_ball.errors %}
@@ -571,7 +565,7 @@
 
     <div class="field">
         <label for="{{ form.low_ball.id_for_label }}">ローボール:</label>
-        {{ form.low_ball }}
+        {{ form.low_ball }} {{ abilities_dict.low_ball }}
         {% if form.low_ball.errors %}
             <div class="errorlist">
                 {% for error in form.low_ball.errors %}
@@ -583,7 +577,7 @@
 
     <div class="field">
         <label for="{{ form.bunt.id_for_label }}">バント:</label>
-        {{ form.bunt }}
+        {{ form.bunt }} {{ abilities_dict.bunt }}
         {% if form.bunt.errors %}
             <div class="errorlist">
                 {% for error in form.bunt.errors %}
@@ -595,7 +589,7 @@
 
     <div class="field">
         <label for="{{ form.base_running.id_for_label }}">走塁:</label>
-        {{ form.base_running }}
+        {{ form.base_running }} {{ abilities_dict.base_running }}
         {% if form.base_running.errors %}
             <div class="errorlist">
                 {% for error in form.base_running.errors %}
@@ -607,7 +601,7 @@
 
     <div class="field">
         <label for="{{ form.steeling.id_for_label }}">盗塁:</label>
-        {{ form.steeling }}
+        {{ form.steeling }} {{ abilities_dict.steeling }}
         {% if form.steeling.errors %}
             <div class="errorlist">
                 {% for error in form.steeling.errors %}
@@ -619,7 +613,7 @@
 
     <div class="field">
         <label for="{{ form.pitcher_lead.id_for_label }}">投手リード:</label>
-        {{ form.pitcher_lead }}
+        {{ form.pitcher_lead }} {{ abilities_dict.pitcher_lead }}
         {% if form.pitcher_lead.errors %}
             <div class="errorlist">
                 {% for error in form.pitcher_lead.errors %}
@@ -631,7 +625,7 @@
 
     <div class="field">
         <label for="{{ form.home_block.id_for_label }}">ブロック:</label>
-        {{ form.home_block }}
+        {{ form.home_block }} {{abilities_dict.home_block}}
         {% if form.home_block.errors %}
             <div class="errorlist">
                 {% for error in form.home_block.errors %}
@@ -643,7 +637,7 @@
 
     <div class="field">
         <label for="{{ form.sturdiness.id_for_label }}">ケガしにくさ:</label>
-        {{ form.sturdiness }}
+        {{ form.sturdiness }} {{abilities_dict.sturdiness}}
         {% if form.sturdiness.errors %}
             <div class="errorlist">
                 {% for error in form.sturdiness.errors %}
@@ -653,21 +647,14 @@
         {% endif %}
     </div>
 
+<!-- {% for key, value in abilities_dict.items %}
+    <p>{{ key }}: {{ value }}</p>
+{% endfor %} -->
+
+
 <div>
     <button type="submit">保存</button>
 </div>
 
 </form>
 {% endblock %} 
-
-{% block script %}
-    <script>
-    function update_appropriate_position() {
-        var main_position = document.getElementById("id_main_position");
-        var appropriate_pitcher = document.getElementById("id_pitcher_appropriate");
-        alert(main_position);
-        
-        alert(appropriate_pitcher);
-    }
-    </script>
-{% endblock %}

@@ -94,6 +94,7 @@ class PlayerForm(forms.ModelForm):
         # "player_type":"選手タイプ",
         "main_position":"メインポジション",
         "character":"キャラクター",
+        "image":"見た目",
         "profile":"プロフィール",
         ###########
         ##投手能力##
@@ -151,8 +152,8 @@ class PlayerForm(forms.ModelForm):
       )
     }
     
-    def __init__(self, *args, **kwargs):
-        super(PlayerForm, self).__init__(*args, **kwargs)
-        self.fields["main_position"].widget.attrs.update({
-            "onchange": "update_appropriate_position();"
-        })
+    # def __init__(self, *args, **kwargs):
+    #     super(PlayerForm, self).__init__(*args, **kwargs)
+    #     self.fields["main_position"].widget.attrs.update({
+    #         "onchange": "update_appropriate_position();"
+    #     })

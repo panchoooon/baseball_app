@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     'django_bootstrap5', #追記
     'first_version', #追記
     # 'accounts', #追記(ユーザー認証機能用)実践Djangoにアプリわけたほうが良いと書いてたので分けた。
-    'accounts.apps.AccountsConfig', ##追記(ユーザー認証機能用)'
+    'accounts.apps.AccountsConfig', ##追記(ユーザー認証機能用)
     
 ]
 

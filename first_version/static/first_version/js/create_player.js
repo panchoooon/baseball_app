@@ -1,19 +1,9 @@
-document.addEventListener('DOMContentLoaded', function(){
-  // タブに対してクリックイベントを適用
-  const tabs = document.getElementsByClassName('tab');
-  for(let i = 0; i < tabs.length; i++) {
-    tabs[i].addEventListener('click', tabSwitch, false);
-  }
+const mainPosition = document.querySelector('#id_main_position');
 
-  // タブをクリックすると実行する関数
-  function tabSwitch(){
-    // タブのclassの値を変更
-    document.getElementsByClassName('is-active')[0].classList.remove('is-active');
-    this.classList.add('is-active');
-    // コンテンツのclassの値を変更
-    document.getElementsByClassName('is-show')[0].classList.remove('is-show');
-    const arrayTabs = Array.prototype.slice.call(tabs);
-    const index = arrayTabs.indexOf(this);
-    document.getElementsByClassName('panel')[index].classList.add('is-show');
-  };
-}, false);
+mainPosition.addEventListener('change', (event) => {
+  const mainPosition = event.target.value;
+  console.log('変更後の値：', mainPosition);
+  alert('変更後の値：' + mainPosition);
+  const id_change_position = '#id_' + mainPosition + '_appropriate';
+  document.querySelector(id_change_position).value = '◎'
+});

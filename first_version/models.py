@@ -118,15 +118,15 @@ PITHING_FORM_CHOICES = [
 ]
 
 MAIN_POSITION_CHOICES = [
-  ("ピッチャー","ピッチャー"),
-  ("キャッチャー","キャッチャー"),
-  ("ファースト", "ファースト"),
-  ("セカンド", "セカンド"),
-  ("サード", "サード"),
-  ("ショート", "ショート"),
-  ("レフト", "レフト"),
-  ("センター", "センター"),
-  ("ライト", "ライト")
+  ("pitcher", "ピッチャー"),
+  ("catcher","キャッチャー"),
+  ("first", "ファースト"),
+  ("second", "セカンド"),
+  ("third", "サード"),
+  ("shortstop", "ショート"),
+  ("left", "レフト"),
+  ("center", "センター"),
+  ("right", "ライト")
 ]
 
 POSITION_APPROPRIATE_CHOICES =[
@@ -232,7 +232,7 @@ class Player(models.Model):
   # 守備適正
   pitcher_appropriate = models.CharField(
     "ピッチャー適正",
-    default=POSITION_APPROPRIATE_CHOICES[3][0],
+    default=POSITION_APPROPRIATE_CHOICES[0][0], #メインポジションの初期値がピッチャーなので、デフォルトの適正を◎とする。
     max_length=10,
     choices=POSITION_APPROPRIATE_CHOICES
   )
@@ -300,7 +300,7 @@ class Player(models.Model):
   )
   stamina = models.PositiveSmallIntegerField(
     "スタミナ",
-    default=200,
+    default=500,
     validators =[MaxValueValidator(1000), MinValueValidator(1)]
   )
   maximum_ball_speed = models.PositiveSmallIntegerField(
@@ -310,17 +310,17 @@ class Player(models.Model):
   )
   power_of_straight = models.PositiveSmallIntegerField(
     "ストレートの球威",
-    default=200,
+    default=500,
     validators =[MaxValueValidator(1000), MinValueValidator(1)]
   )
   growth_of_straight = models.PositiveSmallIntegerField(
     "ストレートのノビ",
-    default=200,
+    default=500,
     validators =[MaxValueValidator(1000), MinValueValidator(1)]
   )
   control_of_straight = models.PositiveSmallIntegerField(
     "ストレートのコントロール",
-    default=200,
+    default=500,
     validators =[MaxValueValidator(1000), MinValueValidator(1)]
   )
   mental_strength = models.PositiveSmallIntegerField(
@@ -340,42 +340,42 @@ class Player(models.Model):
   ###########
   contact = models.PositiveSmallIntegerField(
     "ミート",
-    default=200,
+    default=500,
     validators =[MaxValueValidator(1000), MinValueValidator(1)]
   )
   power = models.PositiveSmallIntegerField(
     "パワー",
-    default=200,
+    default=500,
     validators =[MaxValueValidator(1000), MinValueValidator(1)]
   )
   vision = models.PositiveSmallIntegerField(
     "選球眼",
-    default=200,
+    default=500,
     validators = [MaxValueValidator(1000), MinValueValidator(1)]
   )
   speed = models.PositiveSmallIntegerField(
     "走力",
-    default=200,
+    default=500,
     validators = [MaxValueValidator(1000), MinValueValidator(1)]
   )
   arm_strength = models.PositiveSmallIntegerField(
     "肩力",
-    default=200,
+    default=500,
     validators = [MaxValueValidator(1000), MinValueValidator(1)]
   )
   arm_accuracy = models.PositiveSmallIntegerField(
     "送球",
-    default=200,
+    default=500,
     validators = [MaxValueValidator(1000), MinValueValidator(1)]
   )
   reaction = models.PositiveSmallIntegerField(
     "打球反応",
-    default=200,
+    default=500,
     validators = [MaxValueValidator(1000), MinValueValidator(1)]
   )
   catch = models.PositiveSmallIntegerField(
     "捕球精度",
-    default=200,
+    default=500,
     validators = [MaxValueValidator(1000), MinValueValidator(1)]
   )
   

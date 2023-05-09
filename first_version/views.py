@@ -11,7 +11,6 @@ from django.urls import reverse_lazy
 def top(request):
     return render(request, "first_version/top.html")
 
-
 # 選手作成画面
 @login_required
 def create_player(request):
@@ -34,10 +33,25 @@ def create_player(request):
             print(form.errors)
             
     else:
+        print("views.py:in(else)")
         form = PlayerForm()
+        # print(form.fields.keys())
+        target_keys = ( #投手能力
+                        "stamina","power_of_straight","growth_of_straigh","power_of_straigh","mental_strength","strike_out",
+                        #野手能力
+                        "contact", "power", "vision", "speed", "arm_strength", "arm_accuracy", "reaction", "catch", "chance", "vs_left_pitcher"\
+                        "inside", "outside", "high_ball", "low_ball","bunt","base_running","steeling","pitcher_lead","home_block","sturdiness")
+        keys = list(form.fields.keys())
+        values = ["D" for i in range(len(keys))]
+        # keys = [k for k in keys if k in target_keys]
+        abilities_dict = dict(zip(keys, values))
+        print(f"abilities_dict:{abilities_dict}")
+        
+        return render(request, "first_version/create_player.html", \
+            {"form": form, "abilities_dict":abilities_dict})
     
     return render(request, "first_version/create_player.html", \
-                    {"form":form})
+                {"form": form})
 
 # 選手一覧画面
 def list_players(request):
