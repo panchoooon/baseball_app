@@ -3,14 +3,64 @@
 {% block extrahead %}
 {% load static %}
 <link rel="stylesheet" href="{% static 'first_version/css/create_player.css' %}">
+<style>
+  main {
+    background-color:rgb(250,250,250);
+  }
+</style>
 
 {% endblock %}
 
 {% block main %}
-
-<div>
-  <h1>選手一覧</h1>
+<div class="bg-primary-subtle">
+  <div>
+    <h1>選手一覧</h1>
+  </div>
+  
+  <div class="row m-2">
+    {% for player in player_list%}
+    <div class="col-lg-6 mb-3">
+    <!-- <div class="col-lg-4 col-md-6 mb-3"> -->
+      <div class="card border-dark">
+        <!-- <div class="card-header">
+          <h4>{{ player.lastName }}</h4>
+        </div> -->
+      
+        <div class="card-body">
+          <div class="row">
+            <div class="col-4">
+              <img class= "img-fluid img-thumbnail" src="/{{ player.image }}">
+            </div>
+            <div class="col-8">
+              <h5 class="card-title">{{ player.lastName }} {{ player.firstName}}</h5>
+              <div class="row">
+                <div class="col-8">
+                  <p class="card-text mb-1">no</p>
+                  <p class="card-text mb-1">利き腕</p>
+                  <p class="card-text mb-1">打席</p>
+                  <p class="card-text mb-1">バットコントロール</p>
+                  <p class="card-text mb-1">パワー</p>
+                  <p class="card-text mb-1">走力</p>
+                </div>
+                <div class="col-4">
+                  <p class="card-text mb-1">{{ player.player_id }}</p>
+                  <p class="card-text mb-1">{{ player.handed }}</p>
+                  <p class="card-text mb-1">{{ player.bbox }}</p>
+                  <p class="card-text mb-1">{{ player.contact }}</p>
+                  <p class="card-text mb-1">{{ player.power }}</p>
+                  <p class="card-text mb-1">{{ player.speed }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+      
+        </div>
+      </div>
+    </div>
+    {% endfor %}  
+  </div>
 </div>
+  
 
 <table border="1" class=""table table-condensed">
   <tr>
