@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required #ログイン必須の画面で使う
-
+from django.contrib import messages
 # Create your views here.
 # from .forms import PlayerProfileForm, PlayerPitcherForm, PlayerFielderForm
 from .forms import PlayerForm
@@ -53,10 +53,12 @@ def create_player(request):
     return render(request, "first_version/create_player.html", \
                 {"form": form})
 
+
 # 選手一覧画面
 def list_players(request):
     player_list = Player.objects.all().values() #DBから選手データを取り出し
-
+    print("player_list:",type(player_list))
+    
     return render(request, "first_version/list_players.html",{"player_list":player_list})
 
 

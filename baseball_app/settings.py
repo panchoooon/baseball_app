@@ -53,8 +53,11 @@ INSTALLED_APPS = [
     'first_version', #追記
     # 'accounts', #追記(ユーザー認証機能用)実践Djangoにアプリわけたほうが良いと書いてたので分けた。
     'accounts.apps.AccountsConfig', ##追記(ユーザー認証機能用)
+    'widget_tweaks', ## 追記 (djangoでCSSを適用するために追加)
     
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

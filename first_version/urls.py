@@ -1,5 +1,5 @@
 from django.urls import path
-from first_version.views import create_player, list_players
+from first_version.views import top, create_player, list_players
 from . import views
 
 urlpatterns = [
