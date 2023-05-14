@@ -32,7 +32,7 @@ function updateRank() {
   });
 }
 
-// フォームの値の変更イベントを監視
-$(function() {
-  $('#id_contact').on('change', updateRank);
-});
+
+
+
+

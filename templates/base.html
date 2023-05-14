@@ -7,7 +7,6 @@
     {% bootstrap_css %}
     {% block extrahead %}
         {% load static %}
-        <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
         <script src="{% static 'js/jquery-3.6.4.js' %}"></script>
     {% endblock %}
     {% bootstrap_javascript %}
@@ -27,9 +26,7 @@
     </div>
 </nav>
 <main>
-    <!-- <div class="container"> -->
     <div class="container">
-    
         {% block main %}{% endblock %}
     </div>
 </main>

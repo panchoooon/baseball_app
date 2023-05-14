@@ -7,6 +7,11 @@ from .forms import PlayerForm
 from .models import Player
 from django.views.generic import TemplateView, CreateView
 from django.urls import reverse_lazy
+
+from django.http import HttpResponse
+from django.http import JsonResponse
+
+
 # トップ画面
 def top(request):
     return render(request, "first_version/top.html")
@@ -24,13 +29,17 @@ def create_player(request):
         if form.is_valid():
             print("form.is_valid()True")
             player = form.save(commit=False)
-            player.created_by = request.user
+            player.created_by = request.user #入力フォームには存在しない、作成者(ログインユーザーとする)の情報を入れる
             player.save()
             return render(request, "first_version/top.html")
         else:
             print("views.py:POST/else(ERROR)")
             print("----------------------------------------------------------")
-            print(form.errors)
+            # print(form.errors)
+            # return HttpResponse('<script>alert("入力値が不正です")</script>')
+            # return JsonResponse({'error': '入力が不正です。'})
+            return render(request, "first_version/create_player.html", \
+                {"form": form})
             
     else:
         print("views.py:in(else)")
@@ -45,13 +54,11 @@ def create_player(request):
         values = ["D" for i in range(len(keys))]
         # keys = [k for k in keys if k in target_keys]
         abilities_dict = dict(zip(keys, values))
-        print(f"abilities_dict:{abilities_dict}")
+        # print(f"abilities_dict:{abilities_dict}")
         
         return render(request, "first_version/create_player.html", \
             {"form": form, "abilities_dict":abilities_dict})
-    
-    return render(request, "first_version/create_player.html", \
-                {"form": form})
+
 
 
 # 選手一覧画面
