@@ -40,6 +40,13 @@ class PlayerForm(forms.ModelForm):
         "control_of_straight",
         "mental_strength",
         "strike_out",
+        
+        #変化球#
+        "flg_slider","power_of_slider","breaking_of_slider","control_of_slider","change_amount_of_slider",
+        "flg_curve","power_of_curve","breaking_of_curve","control_of_curve","change_amount_of_curve",
+        "flg_fork","power_of_fork","breaking_of_fork","control_of_fork","change_amount_of_fork",
+        "flg_sinker","power_of_sinker","breaking_of_sinker","control_of_sinker","change_amount_of_sinker",
+        "flg_shoot","power_of_shoot","breaking_of_shoot","control_of_shoot","change_amount_of_shoot",
         ###########
         # 野手能力 #
         ###########
@@ -107,6 +114,41 @@ class PlayerForm(forms.ModelForm):
         "control_of_straight":"ストレートのコントロール",
         "mental_strength":"メンタル",
         "strike_out":"奪三振",
+        
+        #スライダー
+        "flg_slider":"スライダーの有無",
+        "power_of_slider":"スライダーの球威",
+        "breaking_of_slider":"スライダーのキレ",
+        "control_of_slider":"スライダーのコントロール",
+        "change_amount_of_slider":"スレイダーの変化量",
+        
+        # カーブ
+        "flg_curve":"カーブの有無",
+        "power_of_curve":"カーブの球威",
+        "breaking_of_curve":"カーブのキレ",
+        "control_of_curve":"カーブのコントロール",
+        "change_amount_of_curve":"カーブの変化量",
+        
+        # フォーク
+        "flg_fork":"フォークの有無",
+        "power_of_fork":"フォークの球威",
+        "breaking_of_fork":"フォークのキレ",
+        "control_of_fork":"フォークのコントロール",
+        "change_amount_of_fork":"フォークの変化量",
+        
+        # シンカー
+        "flg_sinker":"シンカーの有無",
+        "power_of_sinker":"シンカーの球威",
+        "breaking_of_sinker":"シンカーのキレ",
+        "control_of_sinker":"シンカーのコントロール",
+        "change_amount_of_sinker":"シンカーの変化量",
+        ### シュート ###
+        "flg_shoot":"シュートの有無",
+        "power_of_shoot":"シュートの球威",
+        "breaking_of_shoot":"シュートのキレ",
+        "control_of_shoot":"シュートのコントロール",
+        "change_amount_of_shoot":"シュートの変化量",
+        
         
         ###########
         ##野手能力##

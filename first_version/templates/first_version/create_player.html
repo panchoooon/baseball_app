@@ -289,6 +289,234 @@
         {% endif %}
     </div>
 
+    <!-- ここから変化球 -->
+    <h7>変化球</h7>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>球種</th>
+                <th>投げられる？</th>
+                <th>変化量</th>
+                <th>球威</th>
+                <th>キレ</th>
+                <th>コントロール</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+                <td>スライダー</td>
+                <td>{{ form.flg_slider }}
+                    <br>
+                    {% if form.flg_slider.errors %}
+                        {% for error in form.flg_slider.errors %}
+                            <span class="error">{{ error }}</span>
+                        {% endfor %}
+                    {% endif %}
+
+                </td>
+                <td>{{ form.change_amount_of_slider }}
+                    <br>
+                    {% if form.change_amount_of_slider.errors %}
+                        {% for error in form.change_amount_of_slider.errors %}
+                            <span class="error">{{ error }}</span>
+                        {% endfor %}
+                    {% endif %}
+                </td>
+                <td>{{ form.power_of_slider }}
+                    <br>
+                    {% if form.power_of_slider.errors %}
+                        {% for error in form.power_of_slider.errors %}
+                            <span class="error">{{ error }}</span>
+                        {% endfor %}
+                    {% endif %}
+                </td>
+                <td>{{ form.breaking_of_slider }}
+                    <br>
+                    {% if form.breaking_of_slider.errors %}
+                        {% for error in form.breaking_of_slider.errors %}
+                            <span class="error">{{ error }}</span>
+                        {% endfor %}
+                    {% endif %}
+                </td>
+                <td>{{ form.control_of_slider }}
+                    <br>
+                    {% if form.control_of_slider.errors %}
+                        {% for error in form.control_of_slider.errors %}
+                            <span class="error">{{ error }}</span>
+                        {% endfor %}
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td>カーブ</td>
+                <td>{{ form.flg_curve }}
+                    <br>
+                    {% if form.flg_curve.errors %}
+                        {% for error in form.flg_curve.errors %}
+                            <span class="error">{{ error }}</span>
+                        {% endfor %}
+                    {% endif %}
+
+                </td>
+                <td>{{ form.change_amount_of_curve }}
+                    <br>
+                    {% if form.change_amount_of_curve.errors %}
+                        {% for error in form.change_amount_of_curve.errors %}
+                            <span class="error">{{ error }}</span>
+                        {% endfor %}
+                    {% endif %}
+                </td>
+                <td>{{ form.power_of_curve }}
+                    <br>
+                    {% if form.power_of_curve.errors %}
+                        {% for error in form.power_of_curve.errors %}
+                            <span class="error">{{ error }}</span>
+                        {% endfor %}
+                    {% endif %}
+                </td>
+                <td>{{ form.breaking_of_curve }}
+                    <br>
+                    {% if form.breaking_of_curve.errors %}
+                        {% for error in form.breaking_of_curve.errors %}
+                            <span class="error">{{ error }}</span>
+                        {% endfor %}
+                    {% endif %}
+                </td>
+                <td>{{ form.control_of_curve }}
+                    <br>
+                    {% if form.control_of_curve.errors %}
+                        {% for error in form.control_of_curve.errors %}
+                            <span class="error">{{ error }}</span>
+                        {% endfor %}
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td>フォーク</td>
+                <td>{{ form.flg_fork }}
+
+                </td>
+                <td>{{ form.change_amount_of_fork }}
+                    <br>
+                    {% if form.change_amount_of_fork.errors %}
+                        {% for error in form.change_amount_of_fork.errors %}
+                            <span class="error">{{ error }}</span>
+                        {% endfor %}
+                    {% endif %}
+                </td>
+                <td>{{ form.power_of_fork }}
+
+                    <br>
+                    {% if form.power_of_fork.errors %}
+                        {% for error in form.power_of_fork.errors %}
+                            <span class="error">{{ error }}</span>
+                        {% endfor %}
+                    {% endif %}
+                </td>
+                <td>{{ form.breaking_of_fork }}
+                    <br>
+                    {% if form.breaking_of_fork.errors %}
+                        {% for error in form.breaking_of_fork.errors %}
+                            <span class="error">{{ error }}</span>
+                        {% endfor %}
+                    {% endif %}
+                </td>
+                <td>{{ form.control_of_fork }}</td>
+            </tr>
+            <tr>
+                <td>シンカー</td>
+                <td>{{ form.flg_sinker }}
+                    {% if form.breaking_of_sinker.errors %}
+                        {% for error in form.breaking_of_sinker.errors %}
+                            <span class="error">{{ error }}</span>
+                        {% endfor %}
+                    {% endif %}
+                </td>
+                <td>{{ form.change_amount_of_sinker }}
+                    <br>
+                    {% if form.change_amount_of_sinker.errors %}
+                        {% for error in form.change_amount_of_sinker.errors %}
+                            <span class="error">{{ error }}</span>
+                        {% endfor %}
+                    {% endif %}
+                </td>
+                <td>{{ form.power_of_sinker }}
+                    <br>
+                    {% if form.power_of_sinker.errors %}
+                        {% for error in form.power_of_sinker.errors %}
+                            <span class="error">{{ error }}</span>
+                        {% endfor %}
+                    {% endif %}
+                </td>
+                <td>{{ form.breaking_of_sinker }}
+                    <br>
+                    {% if form.breaking_of_sinker.errors %}
+                        {% for error in form.breaking_of_sinker.errors %}
+                            <span class="error">{{ error }}</span>
+                        {% endfor %}
+                    {% endif %}
+
+                </td>
+                <td>{{ form.control_of_sinker }}
+                    <br>
+                    {% if form.control_of_sinker.errors %}
+                        {% for error in form.control_of_sinker.errors %}
+                            <span class="error">{{ error }}</span>
+                        {% endfor %}
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td>シュート</td>
+                <td>{{ form.flg_shoot }}
+                    <br>
+                    {% if form.flg_shoot.errors %}
+                        {% for error in form.flg_shoot.errors %}
+                            <span class="error">{{ error }}</span>
+                        {% endfor %}
+                    {% endif %}
+                </td>
+                <td>{{ form.change_amount_of_shoot }}
+                    <br>
+                    {% if form.change_amount_of_shoot.errors %}
+                        {% for error in form.change_amount_of_shoot.errors %}
+                            <span class="error">{{ error }}</span>
+                        {% endfor %}
+                    {% endif %}
+                </td>
+                <td>{{ form.power_of_shoot }}
+                    <br>
+                    {% if form.power_of_shoot.errors %}
+                        {% for error in form.power_of_shoot.errors %}
+                            <span class="error">{{ error }}</span>
+                        {% endfor %}
+                    {% endif %}
+                </td>
+                <td>{{ form.breaking_of_shoot }}
+                    <br>
+                    {% if form.breaking_of_shoot.errors %}
+                        {% for error in form.breaking_of_shoot.errors %}
+                            <span class="error">{{ error }}</span>
+                        {% endfor %}
+                    {% endif %}
+
+                </td>
+                <td>{{ form.control_of_shoot }}
+                    <br>
+                    {% if form.control_of_shoot.errors %}
+                        {% for error in form.control_of_shoot.errors %}
+                            <span class="error">{{ error }}</span>
+                        {% endfor %}
+                    {% endif %}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- ここまで変化球 -->
+
+
     <h2>野手能力</h2>
     <div class="field">
         <label for="{{ form.contact.id_for_label }}">ミート:</label>

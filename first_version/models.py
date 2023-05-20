@@ -318,6 +318,7 @@ class Player(models.Model):
   growth_of_straight = models.PositiveSmallIntegerField(
     "ストレートのノビ",
     default=500,
+    help_text="1~1000",
     validators =[MaxValueValidator(1000), MinValueValidator(1)]
   )
   control_of_straight = models.PositiveSmallIntegerField(
@@ -334,6 +335,153 @@ class Player(models.Model):
     "奪三振",
     default=5,
     validators =[MaxValueValidator(10), MinValueValidator(5)]
+  )
+  ##ここから変化球##
+  
+  ### スライダー ###
+  flg_slider = models.BooleanField(
+    "スライダーの有無",
+    default = False,
+  )
+  power_of_slider = models.PositiveSmallIntegerField(
+    "スライダーの球威",
+    default = 1,
+    help_text="1~1000",
+    validators =[MaxValueValidator(1000), MinValueValidator(1)]
+  )
+  breaking_of_slider = models.PositiveSmallIntegerField(
+    "スライダーのキレ",
+    default=1,
+    help_text="1~1000",
+    validators =[MaxValueValidator(1000), MinValueValidator(1)]
+  )
+  control_of_slider = models.PositiveSmallIntegerField(
+    "スライダーのコントロール",
+    default=1,
+    help_text="1~1000",
+    validators =[MaxValueValidator(1000), MinValueValidator(1)]
+  )
+  change_amount_of_slider = models.PositiveSmallIntegerField(
+    "スレイダーの変化量",
+    default=1,
+    help_text="1~1000",
+    validators =[MaxValueValidator(1000), MinValueValidator(1)]
+  )
+  ### カーブ ###
+  flg_curve = models.BooleanField(
+    "カーブの有無",
+    default = False,
+  )
+  power_of_curve = models.PositiveSmallIntegerField(
+    "カーブの球威",
+    default = 1,
+    help_text="1~1000",
+    validators =[MaxValueValidator(1000), MinValueValidator(1)]
+  )
+  breaking_of_curve = models.PositiveSmallIntegerField(
+    "カーブのキレ",
+    default=1,
+    help_text="1~1000",
+    validators =[MaxValueValidator(1000), MinValueValidator(1)]
+  )
+  control_of_curve = models.PositiveSmallIntegerField(
+    "カーブのコントロール",
+    default=1,
+    help_text="1~1000",
+    validators =[MaxValueValidator(1000), MinValueValidator(1)]
+  )
+  change_amount_of_curve = models.PositiveSmallIntegerField(
+    "カーブの変化量",
+    default=1,
+    help_text="1~1000",
+    validators =[MaxValueValidator(1000), MinValueValidator(1)]
+  )
+  ### フォーク ###
+  flg_fork = models.BooleanField(
+    "フォークの有無",
+    default = False,
+  )
+  power_of_fork = models.PositiveSmallIntegerField(
+    "フォークの球威",
+    default = 1,
+    help_text="1~1000",
+    validators =[MaxValueValidator(1000), MinValueValidator(1)]
+  )
+  breaking_of_fork = models.PositiveSmallIntegerField(
+    "フォークのキレ",
+    default=1,
+    help_text="1~1000",
+    validators =[MaxValueValidator(1000), MinValueValidator(1)]
+  )
+  control_of_fork = models.PositiveSmallIntegerField(
+    "フォークのコントロール",
+    default=1,
+    help_text="1~1000",
+    validators =[MaxValueValidator(1000), MinValueValidator(1)]
+  )
+  change_amount_of_fork = models.PositiveSmallIntegerField(
+    "フォークの変化量",
+    default=1,
+    help_text="1~1000",
+    validators =[MaxValueValidator(1000), MinValueValidator(1)]
+  )
+  ### シンカー ###
+  flg_sinker = models.BooleanField(
+    "シンカーの有無",
+    default = False,
+  )
+  power_of_sinker = models.PositiveSmallIntegerField(
+    "シンカーの球威",
+    default = 1,
+    help_text="1~1000",
+    validators =[MaxValueValidator(1000), MinValueValidator(1)]
+  )
+  breaking_of_sinker = models.PositiveSmallIntegerField(
+    "シンカーのキレ",
+    default=1,
+    help_text="1~1000",
+    validators =[MaxValueValidator(1000), MinValueValidator(1)]
+  )
+  control_of_sinker = models.PositiveSmallIntegerField(
+    "シンカーのコントロール",
+    default=1,
+    help_text="1~1000",
+    validators =[MaxValueValidator(1000), MinValueValidator(1)]
+  )
+  change_amount_of_sinker = models.PositiveSmallIntegerField(
+    "シンカーの変化量",
+    default=1,
+    help_text="1~1000",
+    validators =[MaxValueValidator(1000), MinValueValidator(1)]
+  )
+  ### シュート ###
+  flg_shoot = models.BooleanField(
+    "シュートの有無",
+    default = False,
+  )
+  power_of_shoot = models.PositiveSmallIntegerField(
+    "シュートの球威",
+    default = 1,
+    help_text="1~1000",
+    validators =[MaxValueValidator(1000), MinValueValidator(1)]
+  )
+  breaking_of_shoot = models.PositiveSmallIntegerField(
+    "シュートのキレ",
+    default=1,
+    help_text="1~1000",
+    validators =[MaxValueValidator(1000), MinValueValidator(1)]
+  )
+  control_of_shoot = models.PositiveSmallIntegerField(
+    "シュートのコントロール",
+    default=1,
+    help_text="1~1000",
+    validators =[MaxValueValidator(1000), MinValueValidator(1)]
+  )
+  change_amount_of_shoot = models.PositiveSmallIntegerField(
+    "シュートの変化量",
+    default=1,
+    help_text="1~1000",
+    validators =[MaxValueValidator(1000), MinValueValidator(1)]
   )
 
 
@@ -446,6 +594,7 @@ class Player(models.Model):
     "いいね",
     default=0,
     validators = [MinValueValidator(0)]
+    
   )
 
   def __str__(self):
