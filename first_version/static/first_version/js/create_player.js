@@ -7,7 +7,7 @@ mainPosition.addEventListener('change', (event) => {
   console.log('変更後の値：', mainPosition);
   alert('変更後の値：' + mainPosition);
   const id_change_position = '#id_' + mainPosition + '_appropriate';
-  document.querySelector(id_change_position).value = '◎'
+  document.querySelector(id_change_position).value = '◎';
 });
 
 // フォームの値が変更されたら実行される関数

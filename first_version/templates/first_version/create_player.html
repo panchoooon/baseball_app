@@ -11,6 +11,7 @@
     integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
     crossorigin="anonymous"
 />
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css"> -->
 <script src="{% static 'first_version/js/create_player.js' %}" defer></script>
 
 
@@ -21,10 +22,11 @@
 <form method = "post" enctype="multipart/form-data" id = "player-form">
 {%csrf_token%}
     {% for message in messages %}
-    <div {% if message.tags %}class="{{ message.tags }}"{% endif %}>
-        {{ message }}
-    </div>
-{% endfor %}
+    <!-- <div class="message-container"> -->
+        <div class="{{ message.tags }} mt-2">{{ message }}</div>
+        <!-- <p>{{ message.tags}}</p> -->
+    <!-- </div> -->
+    {% endfor %}
     <h2>プロフィール</h2>
     <div class="field">
         <label for="{{ form.lastName.id_for_label }}">姓:</label>
@@ -555,17 +557,17 @@
 
 </form>
 
-<p class="example">TEST!!!!</p>
 
-<scrpt>
-    function validateForm() {
-        var form = document.getElementById("my-form");
+
+<script>
+    document.getElementById('player-form').addEventListener('submit', function(event) {
+        var form = event.target;
+        console.log("in:script!!");
         if (!form.checkValidity()) {
-          alert("フォームの入力値が不正です");
-          return false;
+            alert('不正な入力があります');
+            event.preventDefault(); // フォームの送信を中止します
         }
-        return true;
-      }
-</scrpt>
+    });
+</script>
 
 {% endblock %} 

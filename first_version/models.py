@@ -7,6 +7,8 @@ from django.core.validators import MaxValueValidator, MinValueValidator #最大�
 
 from django.contrib.auth.models import User #ユーザー
 
+
+
 CAREER_CHOICES = [
   ('高卒', '高卒'),
   ('大卒', '大卒'),
@@ -81,7 +83,7 @@ BIRTHPLACE_CHOICES = [
   ("ニカラグア","ニカラグア")
 ]
 
-HANDED_CHOICES = [
+THROW_CHOICES = [
   ("右","右"),
   ("左","左")
 ]

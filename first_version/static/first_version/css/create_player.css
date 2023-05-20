@@ -46,5 +46,22 @@
   border-radius: 0.5rem;
   background-color: #118299;
 }
-span.error { color: red; }
+/* span.error { color: red; } */
+
+
+/* .success{
+  background-color: #00d1b2;
+  padding: 10px;
+  border-radius: 4px;
+  text-align: center;
+  color: white;
+}
+.error{
+  background-color: orangered;
+  padding: 10px;
+  border-radius: 4px;
+  text-align: center;
+  color: white;
+} */
+
 
