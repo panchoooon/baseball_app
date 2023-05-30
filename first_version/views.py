@@ -11,6 +11,22 @@ from django.urls import reverse_lazy
 from django.http import HttpResponse
 from django.http import JsonResponse
 
+import json
+from django.db.models import QuerySet
+import pandas as pd
+
+position_map = {
+    "pitcher":"投手",
+    "catcher":"捕手",
+    "first":"内野手",
+    "second":"内野手",
+    "third":"内野手",
+    "shortstop":"内野手",
+    "left":"外野手",
+    "center":"外野手",
+    "right":"外野手"
+}
+
 # トップ画面
 def top(request):
     return render(request, "first_version/top.html")
@@ -60,8 +76,17 @@ def create_player(request):
 # 選手一覧画面
 def list_players(request):
     player_list = Player.objects.all().values() #DBから選手データを取り出し
-    print("player_list:",type(player_list))
+
     
+    # df = pd.DataFrame(player_list)
+    # print("type(player_list):",type(player_list))
+    # # 「ファースト...ショート」→「内野手」のように値をマッピング
+    # df["main_position_roughly"] = df["main_position"].map(position_map)
+    # # print("df.to_json():",df.to_json())
+    # print("type(df.to_json):",type(df.to_json()))
+    # json_list = json.loads(df.to_json())
+    # queryset = QuerySet(model=Player, query=None, objects=json_list)
+    # player_list = df.to_json()
     return render(request, "first_version/list_players.html",{"player_list":player_list})
 
 

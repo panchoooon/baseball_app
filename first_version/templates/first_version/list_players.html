@@ -32,8 +32,8 @@
               <img class= "img-fluid img-thumbnail" src="/{{ player.image }}">
             </div>
             <div class="col-8">
-              <h5 class="card-title">{{ player.lastName }} {{ player.firstName}}</h5>
-              <div class="row">
+              <h5 class="card-title">{{ player.uniformNumber }} {{ player.lastName }} {{ player.firstName}} ({{player.main_position}})</h5>
+              <!-- <div class="row">
                 <div class="col-8">
                   <p class="card-text mb-1">no</p>
                   <p class="card-text mb-1">利き腕</p>
@@ -49,7 +49,15 @@
                   <p class="card-text mb-1">{{ player.contact }}</p>
                   <p class="card-text mb-1">{{ player.power }}</p>
                   <p class="card-text mb-1">{{ player.speed }}</p>
+                </div> -->
+                <div class="row">
+                  <div class="col-8">
+                    <p class="card-text mb-1">created by</p>
+                  </div>
+                <div class="col-4">
+                  <p class="card-text mb-1">{{ player.created_by_id }}</p>
                 </div>
+                  <p class="card-text mb-1">{{player.main_position}}</p>
               </div>
             </div>
           </div>
