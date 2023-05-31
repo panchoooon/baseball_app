@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>TEST</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.min.js"
+  integrity="sha512-VMsZqo0ar06BMtg0tPsdgRADvl0kDHpTbugCBBrL55KmucH6hP9zWdLIWY//OTfMnzz6xWQRxQqsUFefwHuHyg=="
+  crossorigin="anonymous"></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@next/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+</head>
+<body>
+<div style="width:400px">
+  <canvas id="mychart"></canvas>
+</div>
+<script>
+//「月別データ」
+var mydata = {
+  labels: ["ミート", "パワー", "選球眼", "走力", "肩力","打球反応", "捕球精度"],
+  datasets: [
+    {
+      label: '野手能力',
+      // hoverBackgroundColor: "rgba(255,99,132,0.3)",
+      data: [500, 910, 676, 350, 710, 510, 590],
+      backgroundColor: [
+      'rgba(255, 99, 132, 0.2)',
+      'rgba(255, 159, 64, 0.2)',
+      'rgba(255, 205, 86, 0.2)',
+      'rgba(75, 192, 192, 0.2)',
+      'rgba(54, 162, 235, 0.2)',
+      'rgba(153, 102, 255, 0.2)',
+      'rgba(201, 203, 207, 0.2)',
+      ],
+      borderColor: [
+      'rgb(255, 99, 132)',
+      'rgb(255, 159, 64)',
+      'rgb(255, 205, 86)',
+      'rgb(75, 192, 192)',
+      'rgb(54, 162, 235)',
+      'rgb(153, 102, 255)',
+      'rgb(201, 203, 207)'
+      ],
+      borderWidth: 1
+    }
+  ]
+};
+
+//「オプション設定」
+var options = {
+  title: {    
+    display: true,
+    text: 'サンプルチャート'
+  }
+};
+
+var ctx = document.getElementById('mychart');
+var myChart = new Chart(ctx, {
+  type: 'bar', //棒グラフ
+  data:mydata, //データ設定 
+  options:options  //オプション設定,
+});
+</script>
+</div>
+</body>
+</html>

@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required #ログイン必須の画面で使う
 from django.contrib import messages
 # Create your views here.
@@ -89,6 +89,26 @@ def list_players(request):
     # player_list = df.to_json()
     return render(request, "first_version/list_players.html",{"player_list":player_list})
 
+def get_rough_position(position):
+    
+    rough_position = None #初期化
+    if position == "pitcher":
+        rough_position = "投手"
+    elif position == "catcher":
+        rough_position = "捕手"
+    elif position in ("first","second","third","shortstop"):
+        rough_position = "内野手"
+    elif position in ("left","center","center"):
+        rough_position = "外野手"
+    else: rough_position = "ERROR"
+    return rough_position
 
-
+# 選手詳細画面
+def detail_player(request, player_id):
+    player = Player.objects.get(player_id=player_id) #DBから選手データを取り出し
+    
+    # サード→内野手。のように大まかなポジションの値を取得する。
+    player.main_position = get_rough_position(player.main_position)
+    return render(request, 'first_version/detail_player.html',{"player":player}) #renderは、描画する、の意味。
+    
 

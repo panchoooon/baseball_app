@@ -1,0 +1,131 @@
+{% block extrahead %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'first_version/css/detail_player.css' %}">
+<style>
+  main {
+    background-color:rgb(250,250,250);
+  }
+</style>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css">
+
+<!-- jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<!-- Bootstrap JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/js/bootstrap.min.js"></script>
+
+<!-- タブ切り替え用 -->
+<script>
+  $(document).ready(function(){
+    $('.nav-link').click(function(){
+      $('.nav-link').removeClass('active');
+      $(this).addClass('active');
+      var tabId = $(this).attr('data-tab');
+      $('.tab-pane').removeClass('show active'); // 修正点: 全てのタブの表示を非表示にする
+      $('#' + tabId).addClass('show active'); // 修正点: 選択されたタブのコンテンツを表示
+    });
+  });
+</script>
+<!-- <script src="{% static 'first_version/js/detail_player.js' %}" defer></script> -->
+
+<script>
+  //「月別データ」
+  var mydata = {
+    labels: ["ミート", "パワー", "選球眼", "走力", "肩力","打球反応", "捕球精度"],
+    datasets: [
+      {
+        label: '野手能力',
+        // hoverBackgroundColor: "rgba(255,99,132,0.3)",
+        data: [500, 910, 676, 350, 710, 510, 590],
+        backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(255, 205, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(201, 203, 207, 0.2)',
+        ],
+        borderColor: [
+        'rgb(255, 99, 132)',
+        'rgb(255, 159, 64)',
+        'rgb(255, 205, 86)',
+        'rgb(75, 192, 192)',
+        'rgb(54, 162, 235)',
+        'rgb(153, 102, 255)',
+        'rgb(201, 203, 207)'
+        ],
+        borderWidth: 1
+      }
+    ]
+  };
+  
+  //「オプション設定」
+  var options = {
+    title: {    
+      display: true,
+      text: 'サンプルチャート'
+    }
+  };
+  
+  var ctx = document.getElementById('mychart');
+  var myChart = new Chart(ctx, {
+    type: 'bar', //棒グラフ
+    data:mydata, //データ設定 
+    options:options  //オプション設定,
+  });
+</script>
+
+{% endblock %}
+  
+{% block main %}
+  <div class="bg-primary-subtle">
+    <div>
+      <h1>{{ player.lastName }}&nbsp;{{ player.firstName }}</h1>
+      <h5>&nbsp;&nbsp;&nbsp;&nbsp;{{player.uniformNumber}}&nbsp;{{player.main_position}}</h5>
+      <img class= "player_image" src="/{{ player.image }}">
+
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" data-tab="profile-tab" href="#">プロフィール</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-tab="pitcher-tab" href="#">投手能力</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-tab="fielder-tab" href="#">野手能力</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane active" id="profile-tab">
+          <!-- プロフィールのコンテンツ -->
+          {{player.birthPlace}}&nbsp;出身
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;{{player.age}}歳
+          <br>
+          身長:{{player.height}}cm&emsp;&emsp;体重:{{player.weight}}kg
+          <br>
+          投打:{{player.throw}}投げ{{player.bbox}}打ち
+          <br>
+          キャラクター:{{player.character}}
+          <br><br><br>
+          {{ player.power_of_straight }}
+          {{player.profile}}
+        </div>
+        <div class="tab-pane" id="pitcher-tab">
+          <!-- 投手能力のコンテンツ -->
+          <canvas id="mychart"></canvas>
+        </div>
+
+        <div class="tab-pane" id="fielder-tab">
+          <!-- 野手能力のコンテンツ -->
+          fielder
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock %}
+
+
+
