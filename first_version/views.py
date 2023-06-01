@@ -106,9 +106,20 @@ def get_rough_position(position):
 # 選手詳細画面
 def detail_player(request, player_id):
     player = Player.objects.get(player_id=player_id) #DBから選手データを取り出し
-    
+
+    fielderAbility = {
+        "data":[player.contact,player.power,player.vision,\
+                player.speed,player.arm_strength,\
+                player.arm_accuracy,player.reaction,player.catch]
+    }
+    context = {
+        "fielderAbility":fielderAbility,
+        "player":player
+    }
     # サード→内野手。のように大まかなポジションの値を取得する。
     player.main_position = get_rough_position(player.main_position)
-    return render(request, 'first_version/detail_player.html',{"player":player}) #renderは、描画する、の意味。
+    # return render(request, 'first_version/detail_player.html',{"player":player}) #renderは、描画する、の意味。
+    return render(request, 'first_version/detail_player.html',context) #renderは、描画する、の意味。
+
     
 
