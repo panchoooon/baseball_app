@@ -107,13 +107,25 @@ def get_rough_position(position):
 def detail_player(request, player_id):
     player = Player.objects.get(player_id=player_id) #DBから選手データを取り出し
 
-    fielderAbility = {
+    # 野手基本能力
+    fielderBasicAbility = {
         "data":[player.contact,player.power,player.vision,\
                 player.speed,player.arm_strength,\
                 player.arm_accuracy,player.reaction,player.catch]
     }
+    
+    # 野手特殊能力
+    fielderSpecialAbility = {
+        "data":[player.chance,player.vs_left_pitcher,player,\
+                player.inside,player.outside,\
+                player.high_ball,player.low_ball,\
+                player.bunt,player.base_running,player.steeling,\
+                player.pitcher_lead,player.home_block,\
+                player.sturdiness]
+    }
     context = {
-        "fielderAbility":fielderAbility,
+        "fielderBasicAbility":fielderBasicAbility,
+        "fielderSpecialAbility":fielderSpecialAbility,
         "player":player
     }
     # サード→内野手。のように大まかなポジションの値を取得する。
