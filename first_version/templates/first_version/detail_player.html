@@ -41,11 +41,11 @@
   
 {% block main %}
   <div class="bg-primary-subtle">
-    <div>
+    <div class = "container">
       <h1>{{ player.lastName }}&nbsp;{{ player.firstName }}</h1>
       <h5>&nbsp;&nbsp;&nbsp;&nbsp;{{player.uniformNumber}}&nbsp;{{player.main_position}}</h5>
       <img class= "player_image" src="/{{ player.image }}">
-
+      <p>created by {{player.created_by}}</p>
       <ul class="nav nav-tabs">
         <li class="nav-item">
           <a class="nav-link active" data-tab="profile-tab" href="#">プロフィール</a>
@@ -58,7 +58,7 @@
         </li>
       </ul>
       <div class="tab-content">
-        <div class="tab-pane active" id="profile-tab">
+        <div class="container tab-pane active" id="profile-tab">
           <!-- プロフィールのコンテンツ -->
           {{player.birthPlace}}&nbsp;出身
           <br>
@@ -73,73 +73,61 @@
           {{ player.power_of_straight }}
           {{player.profile}}
         </div>
-        <div class="tab-pane" id="pitcher-tab">
+        <div class="container tab-pane" id="pitcher-tab">
           <!-- 投手能力のコンテンツ -->
           <canvas id="mychart"></canvas>
         </div>
 
-        <div class="tab-pane" id="fielder-tab">
+        <div class="container tab-pane" id="fielder-tab">
           <!-- 野手能力のコンテンツ -->
+          <h7>基本能力</h7>
           <div style="width:400px">
             <canvas id="fielderAbility_chart"></canvas>
           </div>
+          <br><br>
+          <h7>特殊能力</h7>
+
+          <div class="container border border-dark">
+            <div class="row border border-dark">
+              <div class="col-sm-2 border border-dark"
+                    id = "chance">チャンス:{{player.chance}}</div>
+              <div class="col-sm-2 border border-dark"
+                    id = "vs_left_pitcher">対左投手:{{player.vs_left_pitcher}}</div>
+              <div class="col-sm-2 border border-dark"
+                    id = "inside">インコース:{{player.inside}}</div>
+              <div class="col-sm-2 border border-dark"
+                    id="outside">アウトコース:{{player.outside}}</div>
+            </div>
+            <div class="row border border-dark">
+              <div class="col-sm-2 border border-dark"
+                    id="high_ball">ハイボール:{{player.high_ball}}</div>
+              <div class="col-sm-2 border border-dark"
+                    id="low_ball">ローボール:{{player.low_ball}}</div>
+              <div class="col-sm-2 border border-dark"
+                    id="bunt">バント:{{player.bunt}}</div>
+              <div class="col-sm-2 border border-dark"
+                    id="base_running">走塁:{{player.base_running}}</div>
+            </div>
+            <div class="row border border-dark">
+              <div class="col-sm-2 border border-dark"
+                    id = "steeling">盗塁:{{player.steeling}}</div>
+              <div class="col-sm-2 border border-dark"
+                    id="pitcher_lead">投手リード:{{player.pitcher_lead}}</div>
+              <div class="col-sm-2 border border-dark"
+                    id="home_block">ブロック:{{player.home_block}}</div>
+              <div class="col-sm-2 border border-dark"
+                    id="sturdiness">ケガしにくさ:{{player.sturdiness}}</div>
+            </div>
+          </div>
 
           <!-- JSでデータ受け取るのに必要↓ -->
-          <input type="hidden" id="fielder" value="{{fielderAbility.data}}">
+          <input type="hidden" id="fielder_basic" value="{{fielderBasicAbility.data}}">
+          <input type="hidden" id="fielder_special" value="{{fielderSpecialAbility.data}}">
           
-          
+
           <script src="{% static 'first_version/js/detail_player.js' %}"></script>
-          
-          <!-- <script>
-            var mydata = {
-              labels: ["ミート", "パワー", "選球眼", "走力", "肩力","送球","打球反応", "捕球精度"],
-              datasets: [
-                {
-                  label: '野手能力',
-                  // data: [{{ player.contact | safe}}, 
-                  //         {{player.power | safe}}, 
-                  //         676, 350, 710, 510, 590, 820],
-                  data:[125, 100, 500, 650, 800, 540, 670, 920],
-                  backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(255, 159, 64, 0.2)',
-                    'rgba(255, 205, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(201, 203, 207, 0.2)',
-                    'rgba(201, 203, 207, 0.2)',
-                    'rgba(122, 150, 235, 0.2)',
-                  ],
-                  borderColor: [
-                    'rgb(255, 99, 132)',
-                    'rgb(255, 159, 64)',
-                    'rgb(255, 205, 86)',
-                    'rgb(75, 192, 192)',
-                    'rgb(54, 162, 235)',
-                    'rgb(153, 102, 255)',
-                    'rgb(201, 203, 207)',
-                    'rgb(122, 203, 247)',
-                  ],
-                  borderWidth: 1
-                }
-              ]
-            };
         
-            var options = {
-              title: {    
-                display: true,
-                text: 'サンプルチャート'
-              }
-            };
         
-            var ctx = document.getElementById('fielderAbility_chart');
-            var myChart = new Chart(ctx, {
-              type: 'bar',
-              data: mydata,
-              options: options
-            });
-          </script> -->
         </div>
       </div>
     </div>

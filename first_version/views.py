@@ -116,17 +116,23 @@ def detail_player(request, player_id):
     
     # 野手特殊能力
     fielderSpecialAbility = {
-        "data":[player.chance,player.vs_left_pitcher,player,\
+        "labels":["chance","vs_left_pitcher","inside","outside",\
+                "high_ball","low_ball","bunt","base_running",\
+                "steeling","pitcher_lead","home_block",\
+                "sturdiness"],
+        "data":[player.chance,player.vs_left_pitcher,\
                 player.inside,player.outside,\
                 player.high_ball,player.low_ball,\
                 player.bunt,player.base_running,player.steeling,\
                 player.pitcher_lead,player.home_block,\
                 player.sturdiness]
     }
+    jsbook = {"title":"Javascript入門", "price":500, "stock":[1,5,2,7,10]}
     context = {
         "fielderBasicAbility":fielderBasicAbility,
         "fielderSpecialAbility":fielderSpecialAbility,
-        "player":player
+        "player":player,
+        "jsbook":jsbook,
     }
     # サード→内野手。のように大まかなポジションの値を取得する。
     player.main_position = get_rough_position(player.main_position)

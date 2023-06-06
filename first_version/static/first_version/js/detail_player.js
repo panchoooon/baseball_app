@@ -9,20 +9,18 @@ $(document).ready(function(){
 });
 
 // 「野手基本能力チャート」ここから
-let fielderAbility_js = document.getElementById('fielder').value;
-let fielderAbility_js_obj = JSON.parse(fielderAbility_js);
+let fielderBasicAbility = document.getElementById('fielder_basic').value;
+fielderBasicAbility = JSON.parse(fielderBasicAbility); //オブジェクト型配列へパースする
 
 var mydata = {
-  labels: ["ミート", "パワー", "選球眼", "走力", "肩力","打球反応", "捕球精度"],
+  labels: ["ミート", "パワー", "選球眼", "走力", "肩力","送球","打球反応", "捕球精度"],
   datasets: [
     {
       label: '野手能力',
       hoverBackgroundColor: "rgba(255,99,132,0.3)",
       // data: [525, 910, 676, 350, 710, 510, 590],
-      data: fielderAbility_js_obj,
-      // data: [{{player.contact}}, {{player.power}}, {{player.vision}},\
-      //       {{player.speed}},{{player.arm_strength}},{{player.arm_accuracy}},\
-      //       {{player.reaction}}],
+      data: fielderBasicAbility,
+
       backgroundColor: [
       'rgba(255, 99, 132, 0.2)',
       'rgba(255, 159, 64, 0.2)',
@@ -60,5 +58,14 @@ var myChart = new Chart(ctx, {
   data:mydata, //データ設定 
   options:options  //オプション設定,
 });
+
+// 「野手基本能力チャート」ここまで
+////////////////////////////////////////////////////////////////
+// 「野手基本能力チャート」ここから
+let fielderSpecialAbility = document.getElementById('fielder_special').value;
+fielderSpecialAbility = JSON.parse(fielderSpecialAbility); //オブジェクト型配列へパースする
+
+document.getElementById('chance').
+  style.backgroundColor = 'pink';
 
 // 「野手基本能力チャート」ここまで
